@@ -12,6 +12,17 @@ export function LOGIN (email, password) {
         }
     };
 }
+export function SIGNUP (email, password) {
+    return {
+        url: 'auth/user',
+        method: 'POST',
+        baseURL: AUTHBASEURL,
+        body: {
+            username: email,
+            password:password
+        }
+    };
+}
 export function GET_ALL_CONTENTS () {
     return {
         url: 'content/get',

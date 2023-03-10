@@ -5,6 +5,8 @@ import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import ErrorPage from './pages/ErrorPage';
 import CollectionPages from './pages/CollectionPages';
+import ProtectedRoute from './util/ProtectedRouter';
+import SignUp from './pages/SignUp';
 
 function App() {
     return (
@@ -12,9 +14,10 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path='*' element={<LoginPage/>} />
-                    <Route path='/home' element={<HomePage/>} />
+                    <Route path='/' element={<SignUp/>} />
+                    <Route path='/home' element={<ProtectedRoute><HomePage/></ProtectedRoute>} />
                     <Route path='/error/:code' element={<ErrorPage/>} />
-                    <Route path='/collection/:id' element={<CollectionPages/>}/>
+                    <Route path='/collection/:id' element={<ProtectedRoute><CollectionPages/></ProtectedRoute>}/>
                 </Routes>
             </BrowserRouter>
         </div>

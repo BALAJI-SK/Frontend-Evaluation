@@ -6,3 +6,4 @@ export {default as SideNav} from './SideNav';
 export {default as Modal} from './Modal';
 export {default as ModalField} from './ModalField';
 export {default as CollectionType} from './CollectionType';
+export {default as SignUpForm} from './SignUpForm';
