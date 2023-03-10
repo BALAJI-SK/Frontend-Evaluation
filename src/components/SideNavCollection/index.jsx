@@ -1,33 +1,31 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { GET_ALL_CONTENTS } from '../../util/constants';
+import {  GET_ALL_DATA } from '../../util/constants';
 import { makeRequest } from '../../util/makeRequest/index';
 import { useNavigate } from 'react-router-dom';
 import  ContentType  from '../ContentType';
-import './SideNav.css';
+import './SideNavCollection.css';
 import CollectionType from '../CollectionType';
 
-const SideNav = () => {
+const SideNavCollection = (id ) => {
     const navigate = useNavigate();
     const [typeData,setTypeData] = useState([]);
-    const [contentShow, setContentShow] = useState(true);
-    const [collectionShow, setCollectionShow] = useState(false);
-    const [contentID, setContentID] = useState(0);
 
+    useEffect(()=>{
+        makeRequest(GET_ALL_DATA())
+            .then((response) => {
+                setTypeData(response);
+            }).catch(() => {
+                navigate('/');
+            });
+
+       
+    }, []);
     const handleCollection = (item) => {
         navigate(`/collection/${item}`);
     };
 
-    useEffect(() => {
-        makeRequest(GET_ALL_CONTENTS())
-            .then((response) => {
-                setTypeData(response);
-            }).catch((error) => {
-                navigate('/');
-            });
-
-    }, []);
 
     return (
         <div className="super">
@@ -56,17 +54,18 @@ const SideNav = () => {
                             })
                             }
                         </ul>
-                       
+                      
+                                          
+                        
                     </div>
                     <div className="Content-type-header">
                         <a><b>CONTENT TYPES BUILDER</b></a>
                     </div> 
                 </div>
         
-            </div>{ contentShow &&
-            <ContentType typeData={typeData} />
-            }
+            </div>
+            <CollectionType id={id} typeData={typeData}   />
         </div>
     );
 };
-export  default SideNav;
+export  default SideNavCollection;

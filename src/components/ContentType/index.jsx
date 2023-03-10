@@ -53,42 +53,44 @@ export const ContentType = ({typeData}) => {
   
 
     return (
-        <div className='contentmain'>
+        <div className="super">
+            <div className='contentmain'>
      
-            <div className='contentheader'>
-                <a id='contentheading'>Content Types</a>
-            </div>
-            <div className='contentbody'>
-                <div className="body-left">
-                    <div className="bodyleftheader">
-                        <a id='body-left-heading'>{typeData.length} Types</a>
-                        <img id="search-img" src={require('../../assets/icon-search-dark_2023-03-09/icon-search-dark.png')} alt="" />
-                    </div>
-                    <button onClick={handleAddType} id="new-btn" >+New Type</button>
-                    { isOpen &&<div className="add-type-container">
-                        <label >Enter new type</label>
-                        <input onChange={handleNewTypeInput} type="text" />
-                        <button onClick={handleAddTypeButton}>Save</button>
-                    </div>
-                    }
-                  
-                    {typeData.map(item=>{
-                        return <div onClick={()=>handleClick(item.id,item)} id="list-content" key={item.id} >
-                            <a name={item.contentName}>{item.contentName}</a>
-                            <a>{Object.keys(item.contentField).length}</a>
-                        </div>;
-                    }
-                    )}
-
-
-
-                </div>    
-                <div className="body-right">
-                    { fieldName !== '' && <Fields fieldName={fieldName} setFieldName= {setFieldName} contentData={contentData} setContentData={setContentData} /> }  
+                <div className='contentheader'>
+                    <a id='contentheading'>Content Types</a>
                 </div>
+                <div className='contentbody'>
+                    <div className="body-left">
+                        <div className="bodyleftheader">
+                            <a id='body-left-heading'>{typeData.length} Types</a>
+                            <img id="search-img" src={require('../../assets/icon-search-dark_2023-03-09/icon-search-dark.png')} alt="" />
+                        </div>
+                        <button onClick={handleAddType} id="new-btn" >+New Type</button>
+                        { isOpen &&<div className="add-type-container">
+                            <label >Enter new type</label>
+                            <input onChange={handleNewTypeInput} type="text" />
+                            <button onClick={handleAddTypeButton}>Save</button>
+                        </div>
+                        }
+                  
+                        {typeData.map(item=>{
+                            return <div onClick={()=>handleClick(item.id,item)} id="list-content" key={item.id} >
+                                <a name={item.contentName}>{item.contentName}</a>
+                                <a>{Object.keys(item.contentField).length}</a>
+                            </div>;
+                        }
+                        )}
+
+
+
+                    </div>    
+                    <div className="body-right">
+                        { fieldName !== '' && <Fields fieldName={fieldName} setFieldName= {setFieldName} contentData={contentData} setContentData={setContentData} /> }  
+                    </div>
+                </div>
+
+
             </div>
-
-
         </div>
     );
 };

@@ -55,3 +55,11 @@ export function DELETE_FIELD (contentID,data) {
         }
     };
 }
+
+export function GET_ALL_DATA () {
+    return {
+        url: 'content/get/all',
+        method: 'GET',
+        baseURL: BACKENDBASEURL,
+    };
+}

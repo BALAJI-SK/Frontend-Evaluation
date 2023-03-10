@@ -2,14 +2,12 @@ import axios, { AxiosError } from 'axios';
 import  {BACKENDBASEURL} from '../constants';
 
 export const makeRequest = async (config) => {
-    console.log(config);
     try {
         
         const  request ={
             ...config,
             baseURL:BACKENDBASEURL
         };
-        console.log(request);
         const response = await axios(request);
         return response.data;
     } catch (error) {
